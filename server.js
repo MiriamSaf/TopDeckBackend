@@ -31,7 +31,7 @@ app.use(fileUpload({
 
 // homepage
 app.get('/', (req,res) =>{
-  res.send("Home")
+  res.send("HomePage")
 })
 
 // auth
