@@ -1,23 +1,23 @@
 const express = require('express')
 const router = express.Router()
 const Utils = require('./../utils')
-const Haircut = require('./../models/Haircut')
+const Tradie = require('./../models/Tradie')
 
-// GET- get all haircuts ---------------------------
+// GET- get all tradies ---------------------------
 router.get('/', Utils.authenticateToken, (req, res) => {
-  Haircut.find().populate('user', '_id firstName lastName')
-    .then(haircuts => {
-      if(haircuts == null){
+  Tradie.find()//.populate('user', '_id firstName lastName')
+    .then(tradies => {
+      if(tradies == null){
         return res.status(404).json({
-          message: "No haircuts found"
+          message: "No tradies found"
         })
       }
-      res.json(haircuts)
+      res.json(tradies)
     })
     .catch(err => {
       console.log(err)
       res.status(500).json({
-        message: "Problem getting haircuts"
+        message: "Problem getting tradies"
       })
     })  
 })

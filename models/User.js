@@ -31,12 +31,16 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  business: {
+    type: Schema.Types.ObjectId,
+    ref: 'Tradie'
+  },
   newUser: {
     type: Boolean,
     default: true
   },
   favouriteHaircuts: [
-    { type: Schema.ObjectId, ref: 'Haircut' }
+    { type: Schema.ObjectId, ref: 'Tradie' }
   ]
 }, { timestamps: true })
 

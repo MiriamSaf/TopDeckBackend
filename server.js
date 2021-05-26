@@ -46,6 +46,10 @@ app.use('/user', userRouter)
 const haircutRouter = require('./routes/haircut')
 app.use('/haircut', haircutRouter)
 
+// tradie
+const tradieRouter = require('./routes/tradie')
+app.use('/tradie', tradieRouter)
+
 
 // run app listen on port --------------------
 app.listen(port, () => {
