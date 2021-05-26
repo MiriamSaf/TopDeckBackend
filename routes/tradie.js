@@ -25,12 +25,7 @@ router.get('/', Utils.authenticateToken, (req, res) => {
 
 // GET - get single Tradie -------------------------------------------------------
 router.get('/:id', Utils.authenticateToken, (req, res) => {
-  /*if(req.user._id != req.params.id){
-    return res.status(401).json({
-      message: "Not authorised"
-    })
-  }*/
-  console.log("Here we are")
+  
   Tradie.findById(req.params.id).populate('favouriteHaircuts')
     .then(user => {
       res.json(user)
@@ -51,7 +46,7 @@ router.get('/customerID/:id', Utils.authenticateToken, (req, res) => {
       message: "Not authorised"
     })
   }
-  console.log("Here we are")
+
   Tradie.find({user : user._id})
     .then(tradie => {
 
@@ -91,7 +86,7 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
     })
   }else{
     // update user without avatar
-    console.log("Here")
+
     updateTradie(req.body)
   }
   
@@ -129,8 +124,6 @@ router.post('/', (req, res) => {
     .then(tradie => {        
       // success!  
       // return 201 status with user object
-      console.log("tradie")
-      console.log(tradie._id)
       //return tradie._id
       return res.status(200).json("Test This")
       //return res.status(201).json(tradie)
