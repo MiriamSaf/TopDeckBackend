@@ -27,19 +27,21 @@ app.use(fileUpload({
 
 
 // routes ---------------------------------
+
+// auth/signin & auth/validate
+const authRouter = require('./routes/auth')
+app.use('/auth', authRouter)
+
 /*
-/auth/sign-in
-(User is issued with an access token and user details are retrieved.)
-
-/auth/validate
-(To make sure the user is authorised for profile and booking pages)
-
 /user
-(Create account/ View account details / Edit account / Delete account)
-
-/package
-(Create packages / Get all packages / Get by Id Packages / Edit packages)
+const userRouter = require('./routes/user')
+app.use('/user', userRouter)
 */
+
+// package
+const packageRouter = require('./routes/package')
+app.use('/package', packageRouter)
+
 
 // run app listen on port --------------------
 app.listen(port, () => {
