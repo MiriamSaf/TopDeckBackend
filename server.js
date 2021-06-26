@@ -32,11 +32,11 @@ app.use(fileUpload({
 const authRouter = require('./routes/auth')
 app.use('/auth', authRouter)
 
-/*
-/user
+
+//user
 const userRouter = require('./routes/user')
 app.use('/user', userRouter)
-*/
+
 
 // package
 const packageRouter = require('./routes/package')
