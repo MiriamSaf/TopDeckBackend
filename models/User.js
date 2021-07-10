@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: String
   },
+  bio: {
+    type: String,
+    required: true
+  },
   accessLevel: {
     type: Number,
     default: 1
