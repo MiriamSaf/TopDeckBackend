@@ -53,7 +53,7 @@ const packageSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  destinationLocation:{
+  endLocation:{
     type: String,
     required: true
   }
