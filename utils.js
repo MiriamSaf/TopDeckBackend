@@ -38,6 +38,7 @@ class Utils {
                     message: "Unauthorised: Token not valid"
                 })
             }
+            console.log('User Authenticated')
             req.user = user
             next()
         })
