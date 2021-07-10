@@ -10,7 +10,8 @@ const packageSchema = new mongoose.Schema({
     required: true
   },
   description: {
-    type: String    
+    type: String,
+    required: true    
   },
   date: {
     type: Date,
@@ -20,14 +21,40 @@ const packageSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  vibe:{
+    type: String,
+    required: true
+  },
   country: {
-    type: String    
+    type: String,
+    required: true    
+  },
+  region: {
+    type: String,
+    required: true
+  },
+  type:{
+    type: String,
+    required: true
   },
   image: {
-    type: String    
+    type: String,  
+    required: true  
   },
   price: {
     type: Number,
+    required: true
+  },
+  bookingStatus: {
+    type :Boolean,
+    default: true
+  },
+  depatureLocation:{
+    type: String,
+    required: true
+  },
+  destinationLocation:{
+    type: String,
     required: true
   }
 }, { timestamps: true })

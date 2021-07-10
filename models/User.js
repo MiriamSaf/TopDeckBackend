@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 1
   },
+  bio: {
+    type: String
+  },
   newUser: {
     type: Boolean,
     default: true
