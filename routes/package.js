@@ -60,14 +60,20 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
     Utils.uploadFile(req.files.image, uploadPath, (uniqueFilename) => {
       imageFilename = uniqueFilename
       // update package with all fields including image
-      updateUser({
+      updatePackage({
         title: req.body.title,
         description: req.body.description,
         date: req.body.date,
         duration: req.body.duration,
+        vibe: req.body.vibe,
         country: req.body.country,
+        region: req.body.region,
+        type: req.body.type,
         image: imageFilename,
-        price: req.body.price
+        price: req.body.price,
+        bookingStatus: req.body.bookingStatus,
+        depatureLocation: req.body.depatureLocation,
+        endLocation: req.body.endLocation
       })
     })
   }else{
