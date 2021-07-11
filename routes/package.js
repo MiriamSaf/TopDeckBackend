@@ -4,6 +4,26 @@ const Utils = require('../utils')
 const Package = require('../models/Package')
 const path = require('path')
 
+// GET - all package -------------------------------------------------------
+router.get('/', Utils.authenticateToken, (req, res) => {
+  Package.find()
+    .then(package => {
+      if(package == null){
+        return res.status(404).json({
+          message: "No packages found"
+        })
+      }
+      res.json(package)
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "Problem getting packages"
+      })
+    })  
+})
+
+
 // GET - get single package -------------------------------------------------------
 router.get('/:id', Utils.authenticateToken, (req, res) => {
   if(req.Package._id != req.params.id){
