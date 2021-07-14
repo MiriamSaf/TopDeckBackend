@@ -13,6 +13,10 @@ const packageSchema = new mongoose.Schema({
     type: String,
     required: true    
   },
+  longDescription: {
+    type: String,
+    required: true    
+  },
   date: {
     type: Date,
     required: true
