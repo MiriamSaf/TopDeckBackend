@@ -55,7 +55,7 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
 
   // if image image exists, upload!
   if(req.files && req.files.image){
-    // upload avater image then update package
+    // upload image then update package
     let uploadPath = path.join(__dirname, '..', 'public', 'images')
     Utils.uploadFile(req.files.image, uploadPath, (uniqueFilename) => {
       imageFilename = uniqueFilename
@@ -100,20 +100,42 @@ router.post('/', (req, res) => {
   if(Object.keys(req.body).length === 0){   
     return res.status(400).send({message: "Package content can not be empty"})
   }
-
-    // create new package       
-    let newPackage = new Package(req.body)
+  // validate - check if image file exist
+  if(!req.files || !req.files.image){
+    return res.status(400).send({message: "Image can't be empty"})
+  }
+  // upload image then update package
+  let uploadPath = path.join(__dirname, '..', 'public', 'images')
+  Utils.uploadFile(req.files.image, uploadPath, (uniqueFilename) => {
+    imageFilename = uniqueFilename
+    // update package with all fields including image
+    let newPackage = new Package({
+      title: req.body.title,
+      description: req.body.description,
+      date: req.body.date,
+      duration: req.body.duration,
+      vibe: req.body.vibe,
+      country: req.body.country,
+      region: req.body.region,
+      type: req.body.type,
+      image: imageFilename,
+      price: req.body.price,
+      bookingStatus: req.body.bookingStatus,
+      depatureLocation: req.body.depatureLocation,
+      endLocation: req.body.endLocation
+    })
     newPackage.save()
-        .then(Package => {        
-        // success!  
-        // return 201 status with package object
-        return res.status(201).json(package)
-        })
-        .catch(err => {
-        console.log(err)
-        return res.status(500).send({
-            message: "Problem creating Package",
-            error: err
+      .then(Package => {        
+      // success!  
+      // return 201 status with package object
+      return res.status(201).json(package)
+      })
+      .catch(err => {
+      console.log(err)
+      return res.status(500).send({
+          message: "Problem creating Package",
+          error: err
+      })
     })
   })
 })
