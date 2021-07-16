@@ -25,7 +25,7 @@ const packageSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  vibe:{
+  vibe: {
     type: String,
     required: true
   },

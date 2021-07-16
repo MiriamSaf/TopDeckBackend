@@ -100,6 +100,7 @@ router.post('/', (req, res) => {
   if(Object.keys(req.body).length === 0){   
     return res.status(400).send({message: "Package content can not be empty"})
   }
+  
   // validate - check if image file exist
   if(!req.files || !req.files.image){
     return res.status(400).send({message: "Image can't be empty"})
