@@ -107,8 +107,10 @@ router.post('/', (req, res) => {
   }
   // upload image then update package
   let uploadPath = path.join(__dirname, '..', 'public', 'images')
+  console.log(uploadPath)
   Utils.uploadFile(req.files.image, uploadPath, (uniqueFilename) => {
     imageFilename = uniqueFilename
+    console.log(imageFilename)
     // update package with all fields including image
     let newPackage = new Package({
       title: req.body.title,
