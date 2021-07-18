@@ -96,6 +96,7 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
 
 // POST - create new package --------------------------------------
 router.post('/', (req, res) => {
+  conosle.log("Creating a new package")
   // validate request
   if(Object.keys(req.body).length === 0){   
     return res.status(400).send({message: "Package content can not be empty"})
