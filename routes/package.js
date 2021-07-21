@@ -4,7 +4,7 @@ const Utils = require('../utils')
 const Package = require('../models/Package')
 const path = require('path')
 // GET - all package -------------------------------------------------------
-router.get('/', Utils.authenticateToken, (req, res) => {
+router.get('/',  (req, res) => {
 Package.find()
 .then(package => {
 if(package == null){
