@@ -46,7 +46,8 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         avatar: avatarFilename,
-        accessLevel: req.body.accessLevel
+        //accessLevel not required
+        //accessLevel: req.body.accessLevel
       })
     })
   }else{
