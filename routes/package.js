@@ -24,11 +24,11 @@ message: "Problem getting packages"
 
 // GET - get single package -------------------------------------------------------
 router.get('/:id', (req, res) => {
-if(req.Package._id != req.params.id){
+/*if(req.Package._id != req.params.id){
 return res.status(401).json({
 message: "Not authorised"
 })
-}
+}*/
 Package.findById(req.params.id)
 .then(package => {
 res.json(package)
