@@ -23,7 +23,7 @@ message: "Problem getting packages"
 })
 
 // GET - get single package -------------------------------------------------------
-router.get('/:id', Utils.authenticateToken, (req, res) => {
+router.get('/:id', (req, res) => {
 if(req.Package._id != req.params.id){
 return res.status(401).json({
 message: "Not authorised"
