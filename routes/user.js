@@ -4,6 +4,70 @@ const Utils = require('../utils')
 const User = require('../models/User')
 const path = require('path')
 
+// PUT - add favouritePackage --------------------------------------
+router.put('/addFavPackage/', Utils.authenticateToken, (req, res) => {  
+  // validate check
+  if(!req.body.packageId){
+    return res.status(400).json({
+      message: "No Package specified"
+    })
+  }
+  // add packageId to favourites field (array - push)
+  User.updateOne({
+    _id: req.user._id
+  }, {
+    $push: {
+      favourites: req.body.packageId
+    }
+  })
+    .then((user) => {            
+      res.json({
+        message: "Package added to favourites"
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "Problem adding favourite package"
+      })
+    })
+})
+
+
+// PULL - remove favouritePackage --------------------------------------
+router.pull('/removeFavPackage/', Utils.authenticateToken, (req, res) => {  
+  // validate check
+  if(!req.body.packageId){
+    return res.status(400).json({
+      message: "No Package specified"
+    })
+  }
+  // remove packageId from favourites field (array - pull)
+  User.updateOne({
+    _id: req.user._id
+  }, {
+    $pull: {
+      favourites: req.body.packageId
+    }
+  })
+    .then((user) => {            
+      res.json({
+        message: "Package removed from favourites"
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "Problem removing favourite package"
+      })
+    })
+})
+
+
+
+
+
+
 // GET - get single user -------------------------------------------------------
 router.get('/:id', Utils.authenticateToken, (req, res) => {
   if(req.user._id != req.params.id){
@@ -100,5 +164,7 @@ router.post('/', (req, res) => {
     })
   })
 })
+
+
 
 module.exports = router
