@@ -4,6 +4,35 @@ const Utils = require('../utils')
 const User = require('../models/User')
 const path = require('path')
 
+// PUT - add bookingsPackage --------------------------------------
+router.put('/addBookingsPackage/', Utils.authenticateToken, (req, res) => {  
+  // validate check
+  if(!req.body.packageId){
+    return res.status(400).json({
+      message: "No booking specified"
+    })
+  }
+  // add packageId to bookings field (array - push)
+  User.updateOne({
+    _id: req.user._id
+  }, {
+    $push: {
+      bookings: req.body.packageId
+    }
+  })
+    .then((user) => {            
+      res.json({
+        message: "Package added to bookings"
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "Problem adding bookings package"
+      })
+    })
+})
+
 // PUT - add favouritePackage --------------------------------------
 router.put('/addFavPackage/', Utils.authenticateToken, (req, res) => {  
   // validate check
