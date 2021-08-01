@@ -43,6 +43,22 @@ const packageRouter = require('./routes/package')
 app.use('/package', packageRouter)
 
 
+// response
+const responseRouter = require('./routes/response')
+app.use('/response', responseRouter)
+
+
+// thread
+const threadRouter = require('./routes/thread')
+app.use('/thread', threadRouter)
+
+
+// topic
+const topicRouter = require('./routes/topic')
+app.use('/topic', topicRouter)
+
+
+
 // run app listen on port --------------------
 app.listen(port, () => {
     console.log("App running on port ", port)
