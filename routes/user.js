@@ -62,7 +62,7 @@ router.put('/addFavPackage/', Utils.authenticateToken, (req, res) => {
     })
 })
 
-
+/*
 // PULL - remove favouritePackage --------------------------------------
 router.pull('/removeFavPackage/', Utils.authenticateToken, (req, res) => {  
   // validate check
@@ -92,7 +92,7 @@ router.pull('/removeFavPackage/', Utils.authenticateToken, (req, res) => {
     })
 })
 
-
+*/
 
 
 
