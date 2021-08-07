@@ -33,6 +33,37 @@ router.put('/addBookingsPackage/', Utils.authenticateToken, (req, res) => {
     })
 })
 
+
+// PUT - remove bookingsPackage --------------------------------------
+router.put('/removeBookingsPackage/', Utils.authenticateToken, (req, res) => {  
+  // validate check
+  if(!req.body.packageId){
+    return res.status(400).json({
+      message: "No booking specified"
+    })
+  }
+  // remove packageId from bookings field (array - push)
+  User.updateOne({
+    _id: req.user._id
+  }, {
+    $pull: {
+      bookings: req.body.packageId
+    }
+  })
+    .then((user) => {            
+      res.json({
+        message: "Package added to bookings"
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "Problem adding bookings package"
+      })
+    })
+})
+
+
 // PUT - add favouritePackage --------------------------------------
 router.put('/addFavPackage/', Utils.authenticateToken, (req, res) => {  
   // validate check
@@ -63,7 +94,7 @@ router.put('/addFavPackage/', Utils.authenticateToken, (req, res) => {
 })
 
 
-// POST - remove favouritePackage --------------------------------------
+// put - remove favouritePackage --------------------------------------
 router.put('/removeFavPackage/', Utils.authenticateToken, (req, res) => {  
   // validate check
   if(!req.body.packageId){
