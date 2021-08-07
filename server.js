@@ -58,6 +58,11 @@ const topicRouter = require('./routes/topic')
 app.use('/topic', topicRouter)
 
 
+// search
+const searchRouter = require('./routes/search')
+app.use('/search', searchRouter)
+
+
 
 // run app listen on port --------------------
 app.listen(port, () => {
