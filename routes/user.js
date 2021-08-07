@@ -52,13 +52,13 @@ router.put('/removeBookingsPackage/', Utils.authenticateToken, (req, res) => {
   })
     .then((user) => {            
       res.json({
-        message: "Package added to bookings"
+        message: "Package removed from bookings"
       })
     })
     .catch(err => {
       console.log(err)
       res.status(500).json({
-        message: "Problem adding bookings package"
+        message: "Problem removing bookings package"
       })
     })
 })
@@ -136,8 +136,7 @@ router.get('/:id', Utils.authenticateToken, (req, res) => {
     })
   }
 
-  User.findById(req.params.id).populate('favourites')
-    .populate('bookings')
+  User.findById(req.params.id).populate('favourites').populate('bookings')
     .then(user => {
       res.json(user)
     })
@@ -148,6 +147,8 @@ router.get('/:id', Utils.authenticateToken, (req, res) => {
         error: err
       })
     })
+
+    
 })
 
 
