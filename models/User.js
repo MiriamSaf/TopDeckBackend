@@ -41,7 +41,64 @@ const userSchema = new mongoose.Schema({
   ],
   bookings: [
     { type: Schema.ObjectId, ref: 'Package' }
-  ]
+  ],
+  userPhone:{
+    type: String
+  },
+  userScreenName:{
+    type: String
+  },
+  userStreet:{
+    type: String
+  },
+  userTown:{
+    type: String
+  },
+  userState:{
+    type: String
+  },
+  userCountry:{
+    type: String
+  },
+  userPostCode:{
+    type: String
+  },
+  userPassport:{
+    type: String
+  },
+  userPassportExpiry:{
+    type: String
+  },
+  emFirstName:{
+    type: String
+  },
+  emLastName:{
+    type: String
+  },
+  emRelationship:{
+    type: String
+  },
+  emStreet:{
+    type: String
+  },
+  emTown:{
+    type: String
+  },
+  emState:{
+    type: String
+  },
+  emCountry:{
+    type: String
+  },
+  emPostCode:{
+    type: String
+  },
+  userScore:{
+    type: Number
+  },
+  userPayType :{
+    type: String
+  }
 }, { timestamps: true })
 
 // encrypt password field on save
