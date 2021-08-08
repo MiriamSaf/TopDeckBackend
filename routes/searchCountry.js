@@ -7,7 +7,7 @@ const path = require('path')
 router.get('/:searchFor', (req, res) => {   
     console.log(req.params.searchFor);
 
-    Package.find({title: { $regex: req.params.searchFor }})
+    Package.find({country: { $regex: req.params.searchFor }})
       .then(tours => {
         console.log(tours)
         return res.json(tours)

@@ -62,6 +62,10 @@ app.use('/topic', topicRouter)
 const searchRouter = require('./routes/search')
 app.use('/search', searchRouter)
 
+// search for Country
+const searchCountryRouter = require('./routes/searchCountry')
+app.use('/searchCountry', searchCountryRouter)
+
 
 
 // run app listen on port --------------------
