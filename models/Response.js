@@ -23,8 +23,8 @@ const responseSchema = new mongoose.Schema({
     default: Date.now 
   },
   userRead: {
-    type: String,  
-    defult: false
+    type: String
+    // defult: false
   }
 }, { timestamps: true })
 
