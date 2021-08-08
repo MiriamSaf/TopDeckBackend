@@ -80,7 +80,7 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
 })
 
 // POST - create new topic --------------------------------------
-router.post('/', (req, res) => {
+router.post('/', Utils.authenticateToken, (req, res) => {
     console.log("Creating a new topic")
     // validate request
     if(Object.keys(req.body).length === 0){
