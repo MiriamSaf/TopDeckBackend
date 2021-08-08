@@ -3,6 +3,7 @@ const router = express.Router()
 const Utils = require('../utils')
 const Topic = require('../models/Topic')
 const path = require('path')
+
 // GET - all topic -------------------------------------------------------
 router.get('/',  (req, res) => {
     Topic.find()
@@ -88,19 +89,19 @@ router.post('/', Utils.authenticateToken, (req, res) => {
     }
 
     // validate - check if image file exist
-    if(!req.files || !req.files.image){
+    /*if(!req.files || !req.files.image){
         return res.status(400).send({message: "Image can't be empty"})
     }
     // upload image then update topic
     let uploadPath = path.join(__dirname, '..', 'public', 'images')
     console.log(uploadPath)
     Utils.uploadFile(req.files.image, uploadPath, (uniqueFilename) => {
-        imageFilename = uniqueFilename
+        imageFilename = uniqueFilename*/
         // update topic with all fields including image
         let newTopic = new Topic({
             topicName: req.body.topicName,
             topicDescription: req.body.topicDescription,
-            topicIcon: imageFilename
+            //topicIcon: imageFilename
         })
         newTopic.save()
         .then(topic => {
