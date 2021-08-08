@@ -69,7 +69,7 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
 })
 
 // POST - create new thread --------------------------------------
-router.post('/', (req, res) => {
+router.post('/', Utils.authenticateToken, (req, res) => {
   // validate request
   if(Object.keys(req.body).length === 0){   
     return res.status(400).send({message: "Thread content can not be empty"})
