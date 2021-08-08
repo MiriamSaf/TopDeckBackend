@@ -15,7 +15,7 @@ const topicSchema = new mongoose.Schema({
   },
   topicIcon: {
     type: String,  
-    required: true
+    //required: true
   }
 }, { timestamps: true })
 
