@@ -7,9 +7,9 @@ const path = require('path')
 router.get('/:searchFor', (req, res) => {   
     console.log(req.params.searchFor);
     Threads.find({topic: { $regex: req.params.searchFor }})
-      .then(tours => {
-        console.log(tours)
-        return res.json(tours)
+      .then(thread => {
+        console.log(thread)
+        return res.json(thread)
       })
       .catch(err => {
         console.log(err)
