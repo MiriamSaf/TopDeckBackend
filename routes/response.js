@@ -6,7 +6,7 @@ const path = require('path')
 
 // GET - all response -------------------------------------------------------
 router.get('/',  (req, res) => {
-  Response.find()
+  Response.find().populate('thread')
   .then(response => {
     if(response == null){
       return res.status(404).json({
