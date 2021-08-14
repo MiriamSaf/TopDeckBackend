@@ -91,4 +91,23 @@ router.post('/', (req, res) => {
     })
 })
 
+
+// GET by thread _id
+
+router.get('/byThreadId/:searchFor', (req, res) => {   
+  console.log(req.params.searchFor);
+  Response.find({thread:  { $regex:{ _id:req.params.searchFor }}})
+    .then(tours => {
+      console.log(tours)
+      return res.json(tours)
+    })
+    .catch(err => {
+      console.log(err)
+      return res.status(500).json({
+        message: "Problem Getting Tour"
+      })
+    })
+})
+
+
 module.exports = router
