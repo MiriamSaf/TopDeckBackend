@@ -6,7 +6,7 @@ const path = require('path')
 
 router.get('/:searchFor', (req, res) => {   
     console.log(req.params.searchFor);
-    Thread.find({threadName: { $regex: req.params.searchFor }})
+    Thread.find({thread:  {_id:req.params.searchFor }}).populate('thread').populate('user')
       .then(tours => {
         console.log(tours)
         return res.json(tours)
