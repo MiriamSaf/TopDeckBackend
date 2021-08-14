@@ -26,11 +26,11 @@ router.get('/',  (req, res) => {
 
 // GET - get single thread -------------------------------------------------------
 router.get('/:id', (req, res) => {
-  if(req.thread._id != req.params.id){
+  /*if(req.thread._id != req.params.id){
     return res.status(401).json({
       message: "Not authorised"
     })
-  }
+  }*/
 
   Thread.findById(req.params.id).populate('topic').populate('user')
     .populate('bookings')
