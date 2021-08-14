@@ -66,6 +66,10 @@ app.use('/search', searchRouter)
 const searchCountryRouter = require('./routes/searchCountry')
 app.use('/searchCountry', searchCountryRouter)
 
+// search Threads
+const searchThreadRouter = require('./routes/searchThread')
+app.use('/searchThread', searchThreadRouter)
+
 
 
 // run app listen on port --------------------
