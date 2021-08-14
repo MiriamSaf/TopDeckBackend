@@ -6,10 +6,11 @@ const path = require('path')
 
 router.get('/:searchFor', (req, res) => {   
     console.log(req.params.searchFor);
+
     Package.find({longDescription: { $regex: req.params.searchFor }})
-      .then(package => {
-        console.log(package)
-        return res.json(package)
+      .then(tours => {
+        console.log(tours)
+        return res.json(tours)
       })
       .catch(err => {
         console.log(err)
