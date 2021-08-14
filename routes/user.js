@@ -167,10 +167,10 @@ router.put('/:id', Utils.authenticateToken, (req, res) => {
       avatarFilename = uniqueFilename
       // update user with all fields including avatar
       updateUser({
-        firstName: req.body.firstName,
+        /*firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email,
-        avatar: avatarFilename,
+        email: req.body.email,*/
+        avatar: avatarFilename
         //accessLevel not required
         //accessLevel: req.body.accessLevel
       })
