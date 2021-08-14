@@ -6,7 +6,7 @@ const path = require('path')
 
 // GET - all response -------------------------------------------------------
 router.get('/',  (req, res) => {
-  Response.find().populate('thread')
+  Response.find().populate('thread').populate('user')
   .then(response => {
     if(response == null){
       return res.status(404).json({
@@ -32,8 +32,8 @@ router.get('/:id', Utils.authenticateToken, (req, res) => {
     })
   }
 
-  Response.findById(req.params.id).populate('favourites')
-    .populate('bookings')
+  Response.findById(req.params.id).populate('thread').populate('user')
+    
     .then(response => {
       res.json(response)
     })
