@@ -18,10 +18,6 @@ const responseSchema = new mongoose.Schema({
   user: [
     { type: Schema.ObjectId, ref: 'User' }
   ],
-  date:{ 
-    type : Date, 
-    default: Date.now 
-  },
   userRead: {
     type: String
     // defult: false
