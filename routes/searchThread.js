@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Utils = require('../utils')
-const Threads = require('../models/Threads')
+const Threads = require('../models/Thread')
 const path = require('path')
 
 router.get('/:searchFor', (req, res) => {   
