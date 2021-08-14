@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Utils = require('../utils')
-const Threads = require('../models/Thread')
+const Thread = require('../models/Thread')
 const path = require('path')
 
 router.get('/:searchFor', (req, res) => {   
     console.log(req.params.searchFor);
-/*    Threads.find({topic: { $regex: req.params.searchFor }})
+    Thread.find({topic: { $regex: req.params.searchFor }})
       .then(thread => {
         console.log(thread)
         return res.json(thread)
@@ -16,7 +16,7 @@ router.get('/:searchFor', (req, res) => {
         return res.status(500).json({
           message: "Problem Getting Tour"
         })
-      })*/
+      })
   })
 
 module.exports = router
