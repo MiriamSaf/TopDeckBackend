@@ -25,12 +25,12 @@ router.get('/',  (req, res) => {
 
 
 // GET - get single response -------------------------------------------------------
-router.get('/:id', Utils.authenticateToken, (req, res) => {
-  if(req.response._id != req.params.id){
+router.get('/:id', /*Utils.authenticateToken,*/ (req, res) => {
+  /*if(req.response._id != req.params.id){
     return res.status(401).json({
       message: "Not authorised"
     })
-  }
+  }*/
 
   Response.findById(req.params.id).populate('thread').populate('user')
     
