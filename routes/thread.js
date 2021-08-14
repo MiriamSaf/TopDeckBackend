@@ -25,14 +25,14 @@ router.get('/',  (req, res) => {
 
 
 // GET - get single thread -------------------------------------------------------
-router.get('/:id', Utils.authenticateToken, (req, res) => {
+router.get('/:id', (req, res) => {
   if(req.thread._id != req.params.id){
     return res.status(401).json({
       message: "Not authorised"
     })
   }
 
-  Thread.findById(req.params.id).populate('favourites')
+  Thread.findById(req.params.id).populate('topic').populate('user')
     .populate('bookings')
     .then(thread => {
       res.json(thread)
