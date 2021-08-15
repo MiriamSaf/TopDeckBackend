@@ -8,7 +8,7 @@ const path = require('path')
 // Get threads by topic _id
 router.get('/:searchFor', (req, res) => {   
     console.log(req.params.searchFor);
-    Thread.find({topic:  {_id:req.params.searchFor }}).populate('topic').populate('user')
+    Thread.find({topic:  {_id:req.params.searchFor }}).populate('topic').populate('user','_id firstName accessLevel userScore avatar userScreenName')
       .then(tours => {
         console.log(tours)
         return res.json(tours)
