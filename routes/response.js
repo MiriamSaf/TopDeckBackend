@@ -96,7 +96,7 @@ router.post('/', (req, res) => {
 
 router.get('/byThreadId/:searchFor', (req, res) => {   
   console.log(req.params.searchFor);
-  Response.find({thread:  {_id:req.params.searchFor }}).populate('thread').populate('user')
+  Response.find({thread:  {_id:req.params.searchFor }}).populate('thread').populate('user','_id firstName accessLevel userScore avatar userScreenName')
     .then(tours => {
       console.log(tours)
       return res.json(tours)
