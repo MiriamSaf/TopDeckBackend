@@ -12,12 +12,16 @@ const responseSchema = new mongoose.Schema({
   quote: {
     type : String
   },
-  thread: [
-      { type: Schema.ObjectId, ref: 'Thread' }
-  ],
-  user: [
-    { type: Schema.ObjectId, ref: 'User' }
-  ],
+  thread: { 
+    type: Schema.Types.ObjectId, 
+    required: true, 
+    ref: 'Thread' 
+  },
+  user: { 
+    type: Schema.Types.ObjectId, 
+    required: true, 
+    ref: 'User' 
+  },
   userRead: {
     type: String
     // defult: false
