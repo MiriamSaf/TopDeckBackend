@@ -9,12 +9,16 @@ const threadSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  topic: [
-      { type: Schema.ObjectId, ref: 'Topic' }
-  ],
-  user: [
-    { type: Schema.ObjectId, ref: 'User' }
-  ],
+  user: { 
+    type: Schema.Types.ObjectId, 
+    required: true, 
+    ref: 'User' 
+  },
+  topic: { 
+    type: Schema.Types.ObjectId, 
+    required: true, 
+    ref: 'Topic' 
+  },
   userRead: {
     type: String
     // defult: false
