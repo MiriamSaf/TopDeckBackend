@@ -78,6 +78,12 @@ const userSchema = new mongoose.Schema({
   emRelationship:{
     type: String
   },
+  emPhone:{
+    type: String
+  },
+  emEmail:{
+    type: String
+  },
   emStreet:{
     type: String
   },
