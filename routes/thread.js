@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
   }*/
 
   //Thread.findById(req.params.id).populate('topic').populate('user', '_id firstName accessLevel userScore avatar userScreenName')
-  Response.find({_id:req.params.id}).populate('topic').populate('user', '_id firstName accessLevel userScore avatar userScreenName')
+  Thread.find({_id:req.params.id}).populate('topic').populate('user', '_id firstName accessLevel userScore avatar userScreenName')
     .then(thread => {
       res.json(thread)
     })
