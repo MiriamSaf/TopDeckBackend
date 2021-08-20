@@ -6,7 +6,7 @@ const path = require('path')
 
 // GET - all thread -------------------------------------------------------
 router.get('/',  (req, res) => {
-  Thread.find().populate('topic').populate('user', '_id firstName accessLevel userScore avatar userScreenName')
+  Thread.find().populate('topic').populate('user','_id firstName accessLevel userScore avatar userScreenName')
   .then(thread => {
     if(thread == null){
       return res.status(404).json({
